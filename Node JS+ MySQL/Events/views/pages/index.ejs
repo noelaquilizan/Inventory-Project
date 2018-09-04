@@ -1,0 +1,43 @@
+<% include ../partials/header %>
+	<br>
+	<div class="">
+		<div class="col s12">
+			<a href="/event/add" class="btn btn-success btn-lg"> Add a new item </a>
+		</div>
+	</div>
+	<br>
+
+	<div class="=">
+		<div class="col s12">
+			<%if (items.length >0) { %>
+				<table class="table">
+					<thead>
+						<tr>
+							<th style="width:1%;text-align:center">ID</th>
+							<th style="width:49%">Name</th>
+							<th style="width:20%">Quantity</th>
+							<th style="width:10%">Amount</th>
+							<th solspan="2" style="width:20%;text-align:center"> Actions</th>
+						</tr>
+					</thead>
+					<tbody>
+							<% items.forEach(function(itemsTable,index){ %>
+								<tr>
+									<td style="width:1%;text-align:center"><%= index +1 %></td>
+									<td style="width:29%"><%= itemsTable.name %></td>						
+									<td style="width:20%"><%= itemsTable.qty %></td>
+									<td style="width:10%"><%= itemsTable.amount %></td>
+									<td solspan="2" style="width:20%;text-align:center">
+										<a href="/event/edit/<%= itemsTable.id%>" class="btn btn-success"> Edit </a>
+										<a href="/event/delete/<%= itemsTable.id%>" class="btn btn-danger"> Delete </a>
+									</td>
+								</tr>
+							<% }); %>
+					</tbody>
+				</table>
+		<%	} else{ %>
+			<p><strong> THERE ARE NO RECORDS AVAILABLE </strong> </p>
+	<%	} %>
+	</div>
+</div> 
+<% include ../partials/footer %> 
