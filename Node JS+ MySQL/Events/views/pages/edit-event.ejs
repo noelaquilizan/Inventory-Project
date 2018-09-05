@@ -1,5 +1,6 @@
 <% include ../partials/header %>
-<div class="row" style="margin-left:50px;margin-right:50px">
+<div class="row" style="margin-left:50px;margin-right:50px;background-color:#f0f0f0;padding-top:25px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19)">
 <form class="col s12" action="http://localhost:4000/event/edit/<%= items[0].id %>" method="post" >
 	<input type="hidden" name="id" value="<%= items[0].id %>">
 	<br>
