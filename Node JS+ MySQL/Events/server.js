@@ -53,6 +53,32 @@ app.get('/event/add', function (req,res){
 		});
 });
 
+/*EDIT*/
+
+app.get('/event/edit/:id', function(req,res){
+
+	con.query("SELECT * FROM items where id='"+ req.params.id+ "'" , function(err,result){
+
+		res.render('pages/edit-event',{
+			siteTitle : siteTitle,
+			pageTitle : "Editing event: " + result[0].name,
+			items : result
+		});
+	});
+});
+
+/*POST METHOD*/
+app.post('/event/add',function(req,res){
+	var name = req.body.name;
+	var qty = req.body.qty;
+	var amount = req.body.amount;
+	var query = "INSERT INTO items (name, qty, amount) VALUES(" +
+		" '" + name+ "','" + qty+ "','" + amount+ "')";
+
+	con.query(query, function(err,result){
+		res.redirect(baseURL);
+	});
+});
 
 
 var server = app.listen(4000,function(){
