@@ -101,6 +101,17 @@ app.post('/event/edit/:id',function(req,res){
 	});
 });
 
+/*DELETE*/
+
+app.get('/event/delete/:id', function(req,res){
+
+	con.query("DELETE FROM items WHERE id='"+ req.params.id+ "'" , function(err,result){
+		if(result.affectedRows){
+			res.redirect(baseURL);
+		}
+	});
+});
+
 var server = app.listen(4000,function(){
 	console.log("Sever started on 4000....");
 });
