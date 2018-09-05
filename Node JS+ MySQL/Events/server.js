@@ -53,21 +53,8 @@ app.get('/event/add', function (req,res){
 		});
 });
 
-/*EDIT*/
 
-app.get('/event/edit/:id', function(req,res){
-
-	con.query("SELECT * FROM items where id='"+ req.params.id+ "'" , function(err,result){
-
-		res.render('pages/edit-event',{
-			siteTitle : siteTitle,
-			pageTitle : "Editing event: " + result[0].name,
-			items : result
-		});
-	});
-});
-
-/*POST METHOD*/
+/*POST METHOD-ADD*/
 app.post('/event/add',function(req,res){
 	var name = req.body.name;
 	var qty = req.body.qty;
@@ -80,6 +67,39 @@ app.post('/event/add',function(req,res){
 	});
 });
 
+
+/*EDIT*/
+
+app.get('/event/edit/:id', function(req,res){
+	con.query("SELECT * FROM items where id='"+ req.params.id+ "'" , function(err,result){
+
+		res.render('pages/edit-event',{
+			siteTitle : siteTitle,
+			pageTitle : "Editing event: " + result[0].name,
+			items : result
+		});
+	});
+});
+
+
+/*POST METHOD-EDIT*/
+app.post('/event/edit/:id',function(req,res){
+	var name = req.body.name;
+	var qty = req.body.qty;
+	var amount = req.body.amount;
+	var id = req.body.id;
+	var query = "UPDATE items SET";
+		query+= " name = '" + name+ "',";
+		query+= " qty = '" + qty+ "',";
+		query+= " amount = '" + amount+ "'";
+		query+= " WHERE id = " + id+ "";
+
+	con.query(query, function(err,result){
+		if(result.affectedRows){
+			res.redirect(baseURL);
+		}	
+	});
+});
 
 var server = app.listen(4000,function(){
 	console.log("Sever started on 4000....");

@@ -1,26 +1,26 @@
 <% include ../partials/header %>
 <div class="row" style="margin-left:50px;margin-right:50px">
-<form class="col s12" action="http://localhost:4000/event/edit/<%= item[0].id %>" method="post" >
-	<input type="hidden" name="id" value="<%= item[0].id %>">
+<form class="col s12" action="http://localhost:4000/event/edit/<%= items[0].id %>" method="post" >
+	<input type="hidden" name="id" value="<%= items[0].id %>">
 	<br>
 	<div class="form-group">
 		<label for="name" class="col-2 col-form-label"><b>Item_Name</b></label>
 		<div class="col-11">
-			<input type="text" name="name" value="<%= item[0].name %>" class="form-control">
+			<input type="text" name="name" value="<%= items[0].name %>" class="form-control">
 		</div>
 	</div>
 
 	<div class="form-group">
 		<label for="qty" class="col-2 col-form-label"><b>Quantity</b></label>
 		<div class="col-11">
-			<input type="text" name="qty" value="<%= item[0].qty %>" class="form-control">
+			<input type="text" name="qty" value="<%= items[0].qty %>" class="form-control">
 		</div>
 	</div>
 
 	<div class="form-group">
 		<label for="amount" class="col-2 col-form-label"><b>Amount</b></label>
 		<div class="col-11">
-			<input type="text" name="amount" value="<%= item[0].amount %>" class="form-control">
+			<input type="text" name="amount" value="<%= items[0].amount %>" class="form-control">
 		</div>
 	</div>
 
