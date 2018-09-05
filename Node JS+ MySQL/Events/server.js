@@ -34,20 +34,31 @@ const baseURL = "http://localhost:4000/";
 
 /*READ*/
 app.get('/', function (req,res){
-	
-con.query("SELECT * FROM items", function(err, result) {
-			res.render('pages/index',{
-			siteTitle : siteTitle,
-			pageTitle : "Welcome to the Inventory",
-			items : result
+
+		con.query("SELECT * FROM items", function(err, result) {
+				res.render('pages/index',{
+				siteTitle : siteTitle,
+				pageTitle : "Welcome to the Inventory",
+				items : result
 		});
 	});
-
 });
+
+/*SEARCH*/
+app.post('/event/search', function (req,res){
+			con.query("SELECT * FROM items WHERE id='"+req.body.search+"'", function(err, result) {
+				
+				res.render('pages/index',{
+				siteTitle : siteTitle,
+				pageTitle : "Welcome to the Inventory",
+				items : result
+				});
+	});
+});
+
 
 /*ADD*/
 app.get('/event/add', function (req,res){
-	
 			res.render('pages/add-event.ejs',{
 			siteTitle : siteTitle,
 			pageTitle : "Add new Item",

@@ -1,22 +1,36 @@
 <% include ../partials/header %>
 	<br>
-	<div class="" style="margin-left:50px;margin-right:50px">
-		<div class="col s12">
-			<a href="/event/add" class="btn btn-success btn-lg"> Add a new item </a>
-		</div>
-	</div>
-	<br>
 
 	<div class="" style="margin-left:50px;margin-right:50px">
 		<div class="col s12">
-			<%if (items.length >0) { %>
+			<div  style="color:#ffff;background-color:#7986cb;padding-top:10px">
+				<form class="col s11" action="http://localhost:4000/event/search" 
+				method="post">
+						<label for="name" style=";margin-right:20px;width:120px;text-align:center"><b>Search:</b></label>
+						<input type="text" name="search" value="" style="margin-right:20px;width:80%">
+						<input type="submit" name="submit" value="Go!" class="btn btn-primary btn-lg" style="margin-bottom:10px">	
+				</form>
+			
+			</div>
+			<br>
+	<div class="" style="margin-left:60px;margin-right:50px;margin-bottom:40px;">
+		<div class="col s12" style="margin-left:20px" id="addNewItem">
+			<a href="/event/add" class="btn btn-success btn-lg" style="float:right;" > Add a new item </a>
+			<a href="http://localhost:4000" class="btn btn-success btn-lg" style="float:right;margin-right:20px" id="clearSearch"> Show all records </a>
+		</div>
+	</div>
+	<br>
+			<%if (items.length >0) { %>	
+
 				<table class="table">
+
 					<thead>
+
 						<tr>
 							<th style="width:1%;text-align:center">ID</th>
-							<th style="width:49%">Item Name</th>
-							<th style="width:20%">Quantity</th>
-							<th style="width:10%">Amount</th>
+							<th style="width:49%" >Item Name</th>
+							<th style="width:20%" >Quantity</th>
+							<th style="width:10%" >Amount</th>
 							<th solspan="2" style="width:20%;text-align:center"> Actions</th>
 						</tr>
 					</thead>
@@ -36,9 +50,11 @@
 							<% }); %>
 					</tbody>
 				</table>
+
 		<%	} else{ %>
-			<p><strong> THERE ARE NO RECORDS AVAILABLE </strong> </p>
+			<p><strong> NOTHING FOUND. PLEASE TRY AGAIN. </strong> </p>
 	<%	} %>
 	</div>
 </div> 
+
 <% include ../partials/footer %> 
