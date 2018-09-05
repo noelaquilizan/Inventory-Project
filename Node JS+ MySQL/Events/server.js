@@ -46,8 +46,7 @@ app.get('/', function (req,res){
 
 /*SEARCH*/
 app.post('/event/search', function (req,res){
-			con.query("SELECT * FROM items WHERE id='"+req.body.search+"'", function(err, result) {
-				
+			con.query("SELECT * FROM items WHERE id='"+req.body.search+"' OR name= '"+req.body.search+"' OR name LIKE '"+req.body.search+"%'" , function(err, result) {
 				res.render('pages/index',{
 				siteTitle : siteTitle,
 				pageTitle : "Welcome to the Inventory",
