@@ -13,14 +13,14 @@
 	<div class="form-group">
 		<label for="qty" class="col-2 col-form-label"><b>Quantity</b></label>
 		<div class="col-11">
-			<input type="text" name="qty" value="<%= items[0].qty %>" class="form-control">
+			<input type="text" name="qty" value="<%= items[0].qty %>" onkeypress="return isNumber(event)" class="form-control">
 		</div>
 	</div>
 
 	<div class="form-group">
 		<label for="amount" class="col-2 col-form-label"><b>Amount</b></label>
 		<div class="col-11">
-			<input type="text" name="amount" value="<%= items[0].amount %>" class="form-control">
+			<input type="text" name="amount" value="<%= items[0].amount %>" onkeypress="return isNumber(event)" class="form-control" >
 		</div>
 	</div>
 
@@ -32,4 +32,16 @@
 	</div>
 </form>
 </div>
+
+
+<script type="text/javascript">
+	function isNumber(evt) {
+    evt = (evt) ? evt : window.event;
+    var charCode = (evt.which) ? evt.which : evt.keyCode;
+    if (charCode > 31 && (charCode < 48 || charCode > 57)) {
+        return false;
+    }
+    return true;
+}
+</script>
 <% include ../partials/footer %> 
