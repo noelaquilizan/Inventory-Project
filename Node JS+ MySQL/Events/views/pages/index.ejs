@@ -23,13 +23,14 @@
 					<tbody>
 							<% items.forEach(function(itemsTable,index){ %>
 								<tr>
-									<td style="width:1%;text-align:center"><%= index +1 %></td>
+									<td style="width:1%;text-align:center"><%= itemsTable.id %></td>
 									<td style="width:29%"><%= itemsTable.name %></td>						
 									<td style="width:20%"><%= itemsTable.qty %></td>
 									<td style="width:10%"><%= itemsTable.amount %></td>
 									<td solspan="2" style="width:20%;text-align:center">
 										<a href="/event/edit/<%= itemsTable.id%>" class="btn btn-success"> Edit </a>
-										<a href="/event/delete/<%= itemsTable.id%>" class="btn btn-danger"> Delete </a>
+										<a href="/event/delete/<%= itemsTable.id%>" class="btn btn-danger" onclick="return confirm('Are you sure you want to delete this item?');"> Delete 
+										</a>
 									</td>
 								</tr>
 							<% }); %>
