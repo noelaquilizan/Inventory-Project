@@ -3,10 +3,9 @@ var http = require('http');
 var mysql = require('mysql');
 var app = express();
 var bodyParser = require('body-parser');
-var dialogs = require('dialogs');
 
 
-
+app.use( express.static( "public" ));
 app.use(bodyParser.urlencoded({ extended: true }));
 
 var dateFormat = require('dateformat');
@@ -38,7 +37,7 @@ app.get('/', function (req,res){
 		con.query("SELECT * FROM items", function(err, result) {
 				res.render('pages/index',{
 				siteTitle : siteTitle,
-				pageTitle : "Welcome to the Inventory",
+				pageTitle : "Welcome to the Inventory"  ,
 				items : result
 		});
 	});
@@ -49,8 +48,8 @@ app.post('/event/search', function (req,res){
 			con.query("SELECT * FROM items WHERE id='"+req.body.search+"' OR name= '"+req.body.search+"' OR name LIKE '"+req.body.search+"%'" , function(err, result) {
 				res.render('pages/index',{
 				siteTitle : siteTitle,
-				pageTitle : "Welcome to the Inventory",
-				items : result
+				pageTitle : "Seach results for: " +req.body.search ,
+				items : result 
 				});
 	});
 });
@@ -87,7 +86,7 @@ app.get('/event/edit/:id', function(req,res){
 
 		res.render('pages/edit-event',{
 			siteTitle : siteTitle,
-			pageTitle : "Editing event: " + result[0].name,
+			pageTitle : "Editing item: " + result[0].name,
 			items : result
 		});
 	});

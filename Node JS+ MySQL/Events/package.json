@@ -20,6 +20,7 @@
     "express": "^4.16.3",
     "express-partials": "^0.3.0",
     "flash": "^1.1.0",
+    "glyphicons": "^0.2.0",
     "jquery": "^3.3.1",
     "mysql": "^2.16.0",
     "tether": "^1.4.4"
